@@ -30,16 +30,19 @@
         <section class="container">
             <div class="row"> 
                 <c:forEach items="${options}" var="item">
-                    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-                        <div class="thumbnail">
-                            <div class="caption">
-                                <h2>${item.title}</h2>
-                                <h3>${item.desc}</h3>
+                    <div class="card" style="width:18rem;">
 
-
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${item.title}</h5>
+                            <h6 class="card-subtitle">${item.desc}</h6>
+                            <a href=" <spring:url value= "${item.url}" /> " class="btn btn-primary">
+                                        <span class="${item.icon}"/></span> Go!!!
+                                    </a>
                         </div>
-                    </div> 
+                    </div>
+
+
+
                 </c:forEach>
             </div>
         </section>   

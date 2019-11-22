@@ -32,7 +32,7 @@ public class BotigaControler {
         afegir.put("title", "Afegir");
         afegir.put("desc", "Permet afegir un article al catàleg");
         afegir.put("url", "/add");
-        afegir.put("icon", "glyphicon-plus-sign glyphicon");
+        afegir.put("icon", "glyphicon glyphicon-plus-sign");
         
         
         
