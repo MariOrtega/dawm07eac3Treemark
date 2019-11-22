@@ -5,6 +5,9 @@
  */
 package cat.xtec.ioc.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
@@ -16,24 +19,33 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author Mari
  */
-
 @Controller
 public class BotigaControler {
-    
-   @RequestMapping(value="/",method=RequestMethod.GET)
-   public ModelAndView hadleRequest(HttpServletRequest request, HttpServletResponse response){
-       ModelAndView modelview=new ModelAndView("home");
-       modelview.getModelMap().addAttribute("banner", "Articles de Nadal!");
-       modelview.getModelMap().addAttribute("tagline", "");
-       
-       
-       
-       
-       
-      // modelview.getModelMap().addAttribute("options",options);
-       
-       return modelview;
-       
-   }
-    
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView hadleRequest(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelview = new ModelAndView("home");
+        modelview.getModelMap().addAttribute("banner", "Articles de Nadal!!!");
+        modelview.getModelMap().addAttribute("tagline", "");
+        List<HashMap> options =new ArrayList();
+        HashMap<String, String>afegir = new HashMap();
+        afegir.put("title", "Afegir");
+        afegir.put("desc", "Permet afegir un article al catàleg");
+        afegir.put("url", "/add");
+        afegir.put("icon", "glyphicon-plus-sign glyphicon");
+        
+        
+        
+        
+        
+        
+        
+        
+        options.add(afegir);
+
+         modelview.getModelMap().addAttribute("options",options);
+        return modelview;
+
+    }
+
 }
