@@ -38,7 +38,12 @@ public class BotigaControler {
         afegir.put("url", "/add");
         afegir.put("icon", "glyphicon glyphicon-plus-sign");
 
+        
+         consultar.put("title", "Consultar");
+        consultar.put("desc", "Permet consultar un article al catàleg");
+        
         options.add(afegir);
+        options.add(consultar);
 
         modelview.getModelMap().addAttribute("options", options);
         return modelview;
