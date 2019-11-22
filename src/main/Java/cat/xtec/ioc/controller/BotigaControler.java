@@ -27,23 +27,20 @@ public class BotigaControler {
         ModelAndView modelview = new ModelAndView("home");
         modelview.getModelMap().addAttribute("banner", "Articles de Nadal!!!");
         modelview.getModelMap().addAttribute("tagline", "");
-        List<HashMap> options =new ArrayList();
-        HashMap<String, String>afegir = new HashMap();
+        List<HashMap> options = new ArrayList();
+        HashMap<String, String> afegir = new HashMap();
+        HashMap<String, String> consultar = new HashMap();
+        HashMap<String, String> filtrar = new HashMap();
+        HashMap<String, String> comprar = new HashMap();
+
         afegir.put("title", "Afegir");
         afegir.put("desc", "Permet afegir un article al catàleg");
         afegir.put("url", "/add");
         afegir.put("icon", "glyphicon glyphicon-plus-sign");
-        
-        
-        
-        
-        
-        
-        
-        
+
         options.add(afegir);
 
-         modelview.getModelMap().addAttribute("options",options);
+        modelview.getModelMap().addAttribute("options", options);
         return modelview;
 
     }
