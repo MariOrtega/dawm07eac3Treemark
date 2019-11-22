@@ -14,6 +14,6 @@
         <title>Pagina de Benvinguda</title>
     </head>
     <body>
-        <h1>Pàqina de Benvinguda</h1>
+        <h1>Articles de Nadal</h1>
     </body>
 </html>
