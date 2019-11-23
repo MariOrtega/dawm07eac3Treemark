@@ -38,12 +38,25 @@ public class BotigaControler {
         afegir.put("url", "/add");
         afegir.put("icon", "glyphicon glyphicon-plus-sign");
 
-        
-         consultar.put("title", "Consultar");
+        consultar.put("title", "Consultar");
         consultar.put("desc", "Permet consultar un article al catàleg");
+        consultar.put("url", "/consultar");
+        consultar.put("icon", "glyphicon glyphicon-search");
         
+        filtrar.put("title", "Filtrar");
+        filtrar.put("desc", "Permet filtrar un article al catàleg");
+        filtrar.put("url", "/filtrar");
+        filtrar.put("icon", "glyphicon glyphicon-filter");
+        
+         comprar.put("title", "Comprar");
+        comprar.put("desc", "Permet comprar un article al catàleg");
+        comprar.put("url", "/comprar");
+        comprar.put("icon", "glyphicon glyphicon-shopping-cart");
+
         options.add(afegir);
         options.add(consultar);
+        options.add(filtrar);
+        options.add(comprar);
 
         modelview.getModelMap().addAttribute("options", options);
         return modelview;

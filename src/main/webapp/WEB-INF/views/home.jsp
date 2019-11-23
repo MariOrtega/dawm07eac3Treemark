@@ -22,6 +22,22 @@
         <title>Pagina de Benvinguda</title>
     </head>
     <body>
+         <div>
+            
+                
+        </div>
+        <nav>
+     <ul class="nav nav-pills">
+         <li role="presentation" class="active">
+          <img src="C:/tmp/logo.png" > <a href="<spring:url value= '/'/>">  
+                Inici
+             </a>
+         </li>
+         <li role="Presentation" class="">
+             <a href="<spring:url value= ''   />" class="btn btndanger btn-mini pull-right">desconnectar</a>
+         </li>                        
+     </ul>    
+</nav>
         <section>
             <div class="jumbotron">
                 <div class="container">
