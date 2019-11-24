@@ -1,10 +1,11 @@
 <%-- 
-    Document   : infoArticle
-    Created on : 23-nov-2019, 18:53:33
+    Document   : helpVendes
+    Created on : 24-nov-2019, 18:10:09
     Author     : Mari
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!-- Latest compiled and minified CSS -->
@@ -23,18 +24,18 @@
     </head>
     <body>
         <nav>
-     <ul class="nav nav-pills">
-         <li role="presentation" class="active">
-             <a href="<spring:url value= '/'/>">
-                Inici
-             </a>
-         </li>
-         <li role="Presentation" class="">
-             <a href="<spring:url value= '/'/>" class="btn btndanger btn-mini pull-right">desconnectar</a>
-         </li>                        
-     </ul>    
-</nav>
-  <section>
+                 <ul class="nav nav-pills">
+                         <li role="presentation" class="active">
+                                 <a href="<spring:url value= '/'/>">
+                                        Inici
+                                     </a>
+                             </li>
+                         <li role="Presentation" class="">
+                                 <a href="<spring:url value= '/'/>" class="btn btndanger btn-mini pull-right">desconnectar</a>
+                             </li>                        
+                     </ul>    
+        </nav>
+        <section>
             <div class="jumbotron">
                 <div class="container">
                     <h1  class="text-primary">${banner}</h1>
@@ -42,27 +43,15 @@
                 </div>
             </div>
         </section>
+        <section>
 
-
-        <section class="container">
-            <div class="row">
-          
-               <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-                    <div class="thumbnail">
-                        <div class="caption">
-                            <h3>Nom: ${article.titol}</h3>
-                            <p>Codi: ${article.codi}</p>
-                            <p>Descripció: ${article.descripcio}</p>
-                            <p>Nombre d'exemplars: ${article.numeroUnitats}</p>
-                            <p>Nombre de reserves: ${article.numeroVendes}</p>
-                           
-                                
-                            
-                        </div>
-                    </div>
+            <div class="container">
+                <h1  class="text-primary">${title}</h1>
+                <p>${desc}</p>
+                <p>${desc1}</p>
+                <p>${desc2}</p>
+                <a href="<spring:url value="/vendaArticle/1"/>" class="btn btn-primary">Comprar</a>
             </div>
-         
-        </div>
-    </section>
+        </section>   
     </body>
 </html>

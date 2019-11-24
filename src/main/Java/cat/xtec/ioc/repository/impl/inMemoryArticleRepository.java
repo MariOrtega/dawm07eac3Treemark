@@ -11,9 +11,12 @@ import cat.xtec.ioc.domain.Decoracio;
 import cat.xtec.ioc.domain.Llum;
 import cat.xtec.ioc.repository.ArticleRepository;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -31,20 +34,15 @@ public class inMemoryArticleRepository implements ArticleRepository {
      */
     public inMemoryArticleRepository() {
 
-        Arbre arbre1 = new Arbre("1","Avet","Arbre de la Estepa",6,2,"1,50","Fusta","verd");
-        Arbre arbre2 = new Arbre("2","Pi","Arbre de bosc",20,3,"1,70","Fusta","verd");
-        Arbre arbre3 = new Arbre("3","Artificial","Arbre de plàstic",34,5,"1","Plàstic","Blanc");
-        Decoracio dec1 = new Decoracio("4","Papa Noel","Figureta d'adorn",40,2,"Figura","Vermell","10");
-        Decoracio dec2 = new Decoracio("5","Reno","Figureta d'adorn",4,2,"Figura","Blanc","10");
-        Decoracio dec3 = new Decoracio("6","Estrella","Estrella de nadal",56,0,"Figura","Platejat","15");
-        Llum llum1 = new Llum("7","LLumetes petites","Llumetes petites  d'adorn",40,2,"llumetes",true,"1");
-        Llum llum2 = new Llum("8","LLumetes mitjanes","Llumetes mitjanes d'adorn",40,2,"Figura",true,"2");
-        Llum llum3 = new Llum("9","LLumetes grans","Llumetes grans",40,2,"Figura",false,"3");
-        
-        
-        
-        
-        
+        Arbre arbre1 = new Arbre("1", "ArbreTitol1", "Arbre de la Estepa", 6, 2, "1,50", "Fusta", "verd");
+        Arbre arbre2 = new Arbre("2", "ArbreTitol2", "Arbre de bosc", 20, 3, "1,70", "Fusta", "verd");
+        Arbre arbre3 = new Arbre("3", "ArbreTitol3", "Arbre de plàstic", 34, 5, "1", "Plàstic", "Blanc");
+        Decoracio dec1 = new Decoracio("4", "DecoracioTitol1", "Figureta d'adorn", 40, 2, "Figura", "Vermell", "10");
+        Decoracio dec2 = new Decoracio("5", "DecoracioTitol2", "Figureta d'adorn", 4, 2, "Figura", "Blanc", "10");
+        Decoracio dec3 = new Decoracio("6", "DecoracioTitol3", "Estrella de nadal", 56, 0, "Figura", "Platejat", "15");
+        Llum llum1 = new Llum("7", "LLumsTitol1", "Llumetes petites  d'adorn", 40, 2, "llumetes", true, "1");
+        Llum llum2 = new Llum("8", "LLumsTitol2", "Llumetes mitjanes d'adorn", 40, 2, "Figura", true, "2");
+        Llum llum3 = new Llum("9", "LLumsTitol3", "Llumetes grans", 40, 2, "Figura", false, "3");
 
         llista.add(arbre1);
         llista.add(arbre2);
@@ -105,7 +103,33 @@ public class inMemoryArticleRepository implements ArticleRepository {
      */
     @Override
     public Set<Article> getArticlebyFilter(Map<String, List<String>> filterParams) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Set<Article> articlePerTipus = new HashSet<Article>();
+        Set<Article> articlePerTitol = new HashSet<Article>();
+        Set<String> criterias = filterParams.keySet();
+        if (criterias.contains("tipus")) {
+            for (String t : filterParams.get("tipus")) {
+                for (Article article : this.llista) {
+                    try {
+                        if (Class.forName("cat.xtec.ioc.domain." + t).isInstance(article)) {
+                            articlePerTipus.add(article);
+                        }
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(inMemoryArticleRepository.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        }
+        if (criterias.contains("title")) {
+            for (String tit : filterParams.get("title")) {
+                for (Article article : llista) {
+                    if (article.getTitol().equals(tit)) {
+                        articlePerTitol.add(article);
 
+                    }
+                }
+            }
+        }
+        articlePerTipus.retainAll(articlePerTitol);
+        return articlePerTipus;
+    }
 }

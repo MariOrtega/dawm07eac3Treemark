@@ -1,6 +1,6 @@
 <%-- 
-    Document   : infoArticle
-    Created on : 23-nov-2019, 18:53:33
+    Document   : helpFilter
+    Created on : 24-nov-2019, 13:24:02
     Author     : Mari
 --%>
 
@@ -19,22 +19,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Filtratge</title>
     </head>
     <body>
         <nav>
-     <ul class="nav nav-pills">
-         <li role="presentation" class="active">
-             <a href="<spring:url value= '/'/>">
-                Inici
-             </a>
-         </li>
-         <li role="Presentation" class="">
-             <a href="<spring:url value= '/'/>" class="btn btndanger btn-mini pull-right">desconnectar</a>
-         </li>                        
-     </ul>    
-</nav>
-  <section>
+                 <ul class="nav nav-pills">
+                         <li role="presentation" class="active">
+                                 <a href="<spring:url value= '/'/>">
+                                        Inici
+                                     </a>
+                             </li>
+                         <li role="Presentation" class="">
+                                 <a href="<spring:url value= '/'/>" class="btn btndanger btn-mini pull-right">desconnectar</a>
+                             </li>                        
+                     </ul>    
+        </nav>
+
+        <section>
             <div class="jumbotron">
                 <div class="container">
                     <h1  class="text-primary">${banner}</h1>
@@ -42,27 +43,18 @@
                 </div>
             </div>
         </section>
+        <section>
 
-
-        <section class="container">
-            <div class="row">
-          
-               <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-                    <div class="thumbnail">
-                        <div class="caption">
-                            <h3>Nom: ${article.titol}</h3>
-                            <p>Codi: ${article.codi}</p>
-                            <p>Descripció: ${article.descripcio}</p>
-                            <p>Nombre d'exemplars: ${article.numeroUnitats}</p>
-                            <p>Nombre de reserves: ${article.numeroVendes}</p>
-                           
-                                
-                            
-                        </div>
-                    </div>
+            <div class="container">
+                <h1  class="text-primary">${title}</h1>
+               
+                <p>${desc}</p>
+                <p>${desc1}</p>
+                <p>${desc2}</p>
+                <p>${desc3}</p>
+                <a href=" <spring:url value= "/filter/tipus=Arbre;title=ArbreTitol1" /> " class="btn btn-primary">Go!!!</a>
             </div>
-         
-        </div>
-    </section>
+
+        </section>
     </body>
 </html>

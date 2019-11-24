@@ -1,6 +1,6 @@
 <%-- 
-    Document   : infoArticle
-    Created on : 23-nov-2019, 18:53:33
+    Document   : listArticleByFilter
+    Created on : 24-nov-2019, 13:37:25
     Author     : Mari
 --%>
 
@@ -23,18 +23,18 @@
     </head>
     <body>
         <nav>
-     <ul class="nav nav-pills">
-         <li role="presentation" class="active">
-             <a href="<spring:url value= '/'/>">
-                Inici
-             </a>
-         </li>
-         <li role="Presentation" class="">
-             <a href="<spring:url value= '/'/>" class="btn btndanger btn-mini pull-right">desconnectar</a>
-         </li>                        
-     </ul>    
-</nav>
-  <section>
+                 <ul class="nav nav-pills">
+                         <li role="presentation" class="active">
+                                 <a href="<spring:url value= '/'/>">
+                                        Inici
+                                     </a>
+                             </li>
+                         <li role="Presentation" class="">
+                                 <a href="<spring:url value= '/'/>" class="btn btndanger btn-mini pull-right">desconnectar</a>
+                             </li>                        
+                     </ul>    
+        </nav>
+        <section>
             <div class="jumbotron">
                 <div class="container">
                     <h1  class="text-primary">${banner}</h1>
@@ -42,27 +42,29 @@
                 </div>
             </div>
         </section>
-
-
-        <section class="container">
+                
+                
+                <section class="container">
             <div class="row">
-          
+            <c:forEach items="${article}" var="item">
                <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                     <div class="thumbnail">
                         <div class="caption">
-                            <h3>Nom: ${article.titol}</h3>
-                            <p>Codi: ${article.codi}</p>
-                            <p>Descripció: ${article.descripcio}</p>
-                            <p>Nombre d'exemplars: ${article.numeroUnitats}</p>
-                            <p>Nombre de reserves: ${article.numeroVendes}</p>
+
+                            <h3>Títol:${item.titol}</h3>
+                            <p>Codi:${item.codi}</p>
+                             <p>Descripció:${item.descripcio} </p>
+                              <p>Nombre d'unitats</p>
+                               <p>Nombe de vendes</p>
                            
-                                
                             
                         </div>
                     </div>
-            </div>
-         
+            </div>                         
+            </c:forEach>
+           
         </div>
     </section>
+                
     </body>
 </html>
