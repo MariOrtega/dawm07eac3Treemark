@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cat.xtec.ioc.repository;
+package cat.xtec.ioc.service;
 
 import cat.xtec.ioc.domain.Article;
 import java.util.List;
@@ -14,9 +14,9 @@ import java.util.Set;
  *
  * @author Mari
  */
-
-public interface ArticleRepository {
+public interface ArticleService {
     public void addArticle(Article article);
     public Article getArticleByCodi(String codi);
-    public Set <Article> getArticlebyFilter(Map<String, List<String> >filterParams);
+    public Set<Article> getArticleByFilter(Map<String, List<String>> filterParams);
+    
 }

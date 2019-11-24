@@ -18,7 +18,7 @@ public class Llum extends Article{
        super();
     }
 
-    public Llum(String color, boolean fixa, String longitud, String codi, String titol, String descripcio, int numeroUnitats, int numeroVendes) {
+    public Llum( String codi, String titol, String descripcio, int numeroUnitats, int numeroVendes,String color, boolean fixa, String longitud) {
         super(codi, titol, descripcio, numeroUnitats, numeroVendes);
         this.color = color;
         this.fixa = fixa;

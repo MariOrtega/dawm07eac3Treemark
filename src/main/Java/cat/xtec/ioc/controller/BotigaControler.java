@@ -5,14 +5,18 @@
  */
 package cat.xtec.ioc.controller;
 
+import cat.xtec.ioc.service.ArticleService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -29,6 +33,9 @@ public class BotigaControler {
     public static String url = "url";
     public static String icon = "icon";
     public static String gly="glyphicon glyphicon-";
+    
+    @Autowired
+    ArticleService articleService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView homeRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -48,7 +55,7 @@ public class BotigaControler {
 
         consultar.put(title, "Consultar");
         consultar.put(desc, "Permet consultar un article al catàleg");
-        consultar.put(url, "/consultar");
+        consultar.put(url, "/get");
         consultar.put(icon, gly+"search");
 
         filtrar.put(title, "Filtrar");
@@ -108,7 +115,38 @@ public class BotigaControler {
         mav.getModelMap().addAttribute("options", options);
 
         return mav;
-
+    }
+    
+    /**
+     * Volem implementar la funcionalitat Consultar
+     * @param request
+     * @param response
+     * @return 
+     */
+    @RequestMapping(value="/get", method=RequestMethod.GET)
+    public ModelAndView getArticleForm(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav= new ModelAndView("getArticleForm");
+        mav.getModelMap().addAttribute(banner,"Articles de Nadal!!!");
+       
+        return mav;
     }
 
+    /**
+     * Funció que rep la informació del formulari.
+     * @param codi
+     * @param request
+     * @param response
+     * @return 
+     */
+    
+    @RequestMapping(value="/get", method=RequestMethod.POST)
+    public ModelAndView getArticleByCodiRequest(@RequestParam String codi, HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav =new ModelAndView("infoArticle");
+        mav.getModelMap().addAttribute(banner, "Articles de Nadal!!!");
+        mav.getModelMap().addAttribute(tagline, "Dades d'un article");
+       mav.getModelMap().addAttribute("article", this.articleService.getArticleByCodi(codi));
+       return mav;
+    }
+    
+    
 }

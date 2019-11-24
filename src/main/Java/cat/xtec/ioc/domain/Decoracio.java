@@ -18,7 +18,7 @@ public class Decoracio extends Article {
         super();
     }
 
-    public Decoracio(String tipus, String color, String mida, String codi, String titol, String descripcio, int numeroUnitats, int numeroVendes) {
+    public Decoracio( String codi, String titol, String descripcio, int numeroUnitats, int numeroVendes,String tipus, String color, String mida) {
         super(codi, titol, descripcio, numeroUnitats, numeroVendes);
         this.tipus = tipus;
         this.color = color;

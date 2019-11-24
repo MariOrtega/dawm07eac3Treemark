@@ -42,7 +42,7 @@ public class Arbre extends Article{
         this.color = color;
     }
 
-    public Arbre(String altura, String material, String color,String codi,String titol, String descripcio,int numeroUnitats,int numeroVendes) {
+    public Arbre(String codi,String titol, String descripcio,int numeroUnitats,int numeroVendes,String altura, String material, String color) {
         super(codi,titol,descripcio,numeroUnitats,numeroVendes);
         this.altura = altura;
         this.material = material;
