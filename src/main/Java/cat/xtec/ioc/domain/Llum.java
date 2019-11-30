@@ -12,7 +12,7 @@ package cat.xtec.ioc.domain;
 public class Llum extends Article{
     String color;
     boolean fixa;
-    String longitud;
+    String longitut;
 
     public Llum() {
        super();
@@ -22,7 +22,7 @@ public class Llum extends Article{
         super(codi, titol, descripcio, numeroUnitats, numeroVendes);
         this.color = color;
         this.fixa = fixa;
-        this.longitud = longitud;
+        this.longitut = longitud;
     }
 
     public String getColor() {
@@ -41,12 +41,12 @@ public class Llum extends Article{
         this.fixa = fixa;
     }
 
-    public String getLongitud() {
-        return longitud;
+    public String getLongitut() {
+        return longitut;
     }
 
-    public void setLongitud(String longitud) {
-        this.longitud = longitud;
+    public void setLongitut(String longitud) {
+        this.longitut = longitud;
     }
     
 }
