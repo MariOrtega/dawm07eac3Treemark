@@ -15,14 +15,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ 
 <!DOCTYPE html>
 <html>
     <head>
+        <spring:url value="/resources" var="urlPublic"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <spring:url value="/resources" var="urlPublic"/>
         <title>Filtratge</title>
     </head>
     <body>
         <nav>
+            <a class="navbar-brand" href="#">
+                <img class="img-responsive" src="${urlPublic}/img/logo.png" alt="logo">
+            </a>
                  <ul class="nav nav-pills">
                          <li role="presentation" class="active">
                                  <a href="<spring:url value= '/'/>">
@@ -52,7 +58,7 @@
                 <p>${desc1}</p>
                 <p>${desc2}</p>
                 <p>${desc3}</p>
-                <a href=" <spring:url value= "/filter/tipus=Arbre;title=ArbreTitol1" /> " class="btn btn-primary">Go!!!</a>
+                <a href=" <spring:url value= "/filter/tipus=Decoracio,Arbre;title=titol,3" /> " class="btn btn-primary">Go!!!</a>
             </div>
 
         </section>

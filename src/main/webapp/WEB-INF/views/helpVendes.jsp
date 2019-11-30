@@ -20,10 +20,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <spring:url value="/resources" var="urlPublic"/>
         <title>JSP Page</title>
     </head>
     <body>
         <nav>
+            <a class="navbar-brand" href="#">
+                <img class="img-responsive" src="${urlPublic}/img/logo.png" alt="logo">
+            </a>
                  <ul class="nav nav-pills">
                          <li role="presentation" class="active">
                                  <a href="<spring:url value= '/'/>">

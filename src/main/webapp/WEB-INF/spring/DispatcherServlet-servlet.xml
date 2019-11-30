@@ -12,6 +12,7 @@
 
 
     <mvc:annotation-driven enable-matrix-variables="true"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
     <context:component-scan base-package="cat.xtec.ioc.controller cat.xtec.ioc.domain cat.xtec.ioc.repository cat.xtec.ioc.service" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

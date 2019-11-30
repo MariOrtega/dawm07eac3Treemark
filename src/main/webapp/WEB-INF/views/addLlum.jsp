@@ -1,8 +1,9 @@
 <%-- 
-    Document   : home
-    Created on : 22-nov-2019, 19:47:05
+    Document   : addLlum
+    Created on : 25-nov-2019, 19:42:29
     Author     : Mari
 --%>
+
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -52,29 +53,5 @@
                 </div>
             </div>
         </section>
-
-
-        <section class="container">
-            <div class="row">
-                <c:forEach items="${options}" var="item"> 
-                    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-                        <div class="thumbnail">
-                            <div class="caption">
-                                <h3>${item.title}</h3>
-                                <p>${item.desc}</p>
-                                <a href="<spring:url value="${item.url}"/>" class="btn btn-primary">
-                                    <span class="${item.icon}"></span>
-                                    Go!!!</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </section>
-
-
-
-
     </body>
 </html>

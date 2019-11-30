@@ -18,11 +18,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <spring:url value="/resources" var="urlPublic"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <title>JSP Page</title>
     </head>
     <body>
         <nav>
+            <a class="navbar-brand" href="#">
+                <img class="img-responsive" src="${urlPublic}/img/logo.png" alt="logo">
+            </a>
                  <ul class="nav nav-pills">
                          <li role="presentation" class="active">
                                  <a href="<spring:url value= '/'/>">
@@ -42,29 +47,29 @@
                 </div>
             </div>
         </section>
-                
-                
-                <section class="container">
-            <div class="row">
-            <c:forEach items="${article}" var="item">
-               <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-                    <div class="thumbnail">
-                        <div class="caption">
 
-                            <h3>Títol:${item.titol}</h3>
-                            <p>Codi:${item.codi}</p>
-                             <p>Descripció:${item.descripcio} </p>
-                              <p>Nombre d'unitats</p>
-                               <p>Nombe de vendes</p>
-                           
-                            
+
+        <section class="container">
+            <div class="row">
+                <c:forEach items="${article}" var="item">
+                    <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                        <div class="thumbnail">
+                            <div class="caption">
+
+                                <h3>Títol:${item.titol}</h3>
+                                <p>Codi:${item.codi}</p>
+                                <p>Descripció:${item.descripcio} </p>
+                                <p>Nombre d'unitats</p>
+                                <p>Nombe de vendes</p>
+
+
+                            </div>
                         </div>
-                    </div>
-            </div>                         
-            </c:forEach>
-           
-        </div>
-    </section>
-                
+                    </div>                         
+                </c:forEach>
+
+            </div>
+        </section>
+
     </body>
 </html>

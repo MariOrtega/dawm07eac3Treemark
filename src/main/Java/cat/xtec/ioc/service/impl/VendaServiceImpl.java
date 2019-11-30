@@ -35,20 +35,12 @@ public class VendaServiceImpl implements VendaService {
     @Override
     public void processVenda(String codiArticle) {
       Article article= this.AR.getArticleByCodi(codiArticle);
-      int numeroDeVendes=article.getNumeroVendes();
-      if(article.getNumeroUnitats()<1){
-          try {
-              throw new Exception("No hi ha prou unitats");
-          } catch (Exception ex) {
-              Logger.getLogger(VendaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-          }
-      
-      }else{
-      article.setNumeroVendes(numeroDeVendes+1);
+     
+     
       article.setNumeroUnitats(article.getNumeroUnitats()-1);
       
         
       }
-    }
+    
 
 }

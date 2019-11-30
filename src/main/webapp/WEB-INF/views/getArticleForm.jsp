@@ -14,16 +14,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+ 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <spring:url value="/resources" var="urlPublic"/>
         <title>JSP Page</title>
     </head>
     <body
 
         <nav>
+            <a class="navbar-brand" href="#">
+                <img class="img-responsive" src="${urlPublic}/img/logo.png" alt="logo">
+            </a>
                  <ul class="nav nav-pills">
                          <li role="presentation" class="active">
                                  <a href="<spring:url value= '/'/>">

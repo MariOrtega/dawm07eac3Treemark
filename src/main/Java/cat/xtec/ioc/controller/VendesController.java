@@ -21,7 +21,7 @@ public class VendesController {
     VendaService vendaService;
     
     @RequestMapping(value="/vendaArticle/{codi}", method=RequestMethod.GET)
-    public String vendre(@PathVariable String codi){
+    public String vendre(@PathVariable("codi") String codi){
        vendaService.processVenda(codi);
        return "redirect:/getArticle/"+codi;
     }

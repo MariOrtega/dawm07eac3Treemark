@@ -31,6 +31,7 @@ public class BotigaControler {
     public static String tagline = "tagline";
     public static String banner = "banner";
     public static String title = "title";
+    public static String nadal="Articles de Nadal!!!";
     public static String desc = "desc";
     public static String url = "url";
     public static String icon = "icon";
@@ -86,7 +87,7 @@ public class BotigaControler {
     public ModelAndView addArticleRequest(HttpServletRequest request, HttpServletResponse response) {
 
         ModelAndView mav = new ModelAndView("home");
-        mav.getModelMap().addAttribute(banner, "Articles de Nadal!!");
+        mav.getModelMap().addAttribute(banner,nadal);
         mav.getModelMap().addAttribute(tagline, "Afegir un article al catàleg");
         List<HashMap> options = new ArrayList();
         HashMap<String, String> arbre = new HashMap();
@@ -95,19 +96,19 @@ public class BotigaControler {
         // arbre
         arbre.put(title,"Arbres");
         arbre.put(desc, "Permet afegir un arbre al catàleg de la botiga");
-        arbre.put(url, "/add/arbre");
+        arbre.put(url, "/add/Arbre");
         arbre.put(icon,gly+"tree-conifer");
         
         //decoracio
         decoracio.put(title, "Decoració");
         decoracio.put(desc, "Permet afegir una decoració al catáleg de la botiga");
-        decoracio.put(url, "/add/decoracio");
+        decoracio.put(url, "/add/Decoracio");
         decoracio.put(icon, gly+"certificate");
         
         //Iluminacio
         llums.put(title, "Il.luminació");
         llums.put(desc, "Permet afegir una iluminació al catáleg de la botiga");
-        llums.put(url, "/add/llums");
+        llums.put(url, "/add/Llum");
         llums.put(icon, gly+"lamp");
         
         
@@ -130,7 +131,7 @@ public class BotigaControler {
     @RequestMapping(value="/get", method=RequestMethod.GET)
     public ModelAndView getArticleForm(HttpServletRequest request, HttpServletResponse response){
         ModelAndView mav= new ModelAndView("getArticleForm");
-        mav.getModelMap().addAttribute(banner,"Articles de Nadal!!!");
+        mav.getModelMap().addAttribute(banner,nadal);
        
         return mav;
     }
@@ -146,7 +147,7 @@ public class BotigaControler {
     @RequestMapping(value="/get", method=RequestMethod.POST)
     public ModelAndView getArticleByCodiRequest(@RequestParam String codi, HttpServletRequest request, HttpServletResponse response){
         ModelAndView mav =new ModelAndView("infoArticle");
-        mav.getModelMap().addAttribute(banner, "Articles de Nadal!!!");
+        mav.getModelMap().addAttribute(banner, nadal);
         mav.getModelMap().addAttribute(tagline, "Dades d'un article");
        mav.getModelMap().addAttribute("article", this.articleService.getArticleByCodi(codi));
        return mav;
@@ -155,7 +156,7 @@ public class BotigaControler {
     @RequestMapping(value="/filter", method=RequestMethod.GET)
     public ModelAndView getArticleByFilter (HttpServletRequest request, HttpServletResponse response){
         ModelAndView mv= new ModelAndView("helpFilter");
-        mv.getModelMap().addAttribute(banner, "Articles de Nadal!!!");
+        mv.getModelMap().addAttribute(banner, nadal);
         mv.getModelMap().addAttribute(tagline,"Ajuda per la creació d'un Filtre");
         mv.getModelMap().addAttribute(title, "Creació d'un filtre tipus ByCriteria"); 
         mv.getModelMap().addAttribute(desc, "Heu de canviar la url d'aquest patró:");
@@ -167,29 +168,48 @@ public class BotigaControler {
     @RequestMapping(value="/filter/{ByCriteria}", method=RequestMethod.GET)
     public ModelAndView listArticleByFilter(@MatrixVariable(pathVar="ByCriteria") Map<String, List<String>> filterParams, HttpServletRequest request, HttpServletResponse response){
         ModelAndView mv= new ModelAndView("listArticleByFilter");
-         mv.getModelMap().addAttribute(banner, "Articles de Nadal!!!");
+         mv.getModelMap().addAttribute(banner, nadal);
         mv.getModelMap().addAttribute(tagline,"Llista d'articles que compleixen els requisits");
         mv.getModelMap().addAttribute("article", this.articleService.getArticleByFilter(filterParams));
         return mv;
     }
+    
+    ////////////////             Comprar Article       /////////////////////////////////////
+    
+    
     @RequestMapping(value="/venda", method=RequestMethod.GET)
     public ModelAndView getVenda (HttpServletRequest request, HttpServletResponse response){
         ModelAndView mv=new ModelAndView("helpVendes");
-        mv.getModelMap().addAttribute(banner, "Articles de Nadal!!!");
+        mv.getModelMap().addAttribute(banner, nadal);
         mv.getModelMap().addAttribute(tagline, "Ajuda per la venda d'un article");
         mv.getModelMap().addAttribute(title, "Venda");
         mv.getModelMap().addAttribute(desc, "Heu de canviar la URL per aquest patró");
         mv.getModelMap().addAttribute("desc1", "/vendaArticle/codi");
-        mv.getModelMap().addAttribute("desc2", "Per exemple si voleu fer una venda per l'arbre:0 seria venda/Article/0");
+        mv.getModelMap().addAttribute("desc2", "Per exemple si voleu fer una venda per l'arbre:0 seria vendaArticle/0");
         return mv;
     }
-    
+
     @RequestMapping(value="/getArticle/{codi}", method=RequestMethod.GET)
     public ModelAndView getArticleByCodiVendaRequest(@PathVariable String codi){
         ModelAndView mv= new ModelAndView("infoArticle");
-         mv.getModelMap().addAttribute(banner, "Articles de Nadal!!!");
+         mv.getModelMap().addAttribute(banner, nadal);
         mv.getModelMap().addAttribute(tagline, "Dades d'un article");
         mv.getModelMap().addAttribute("article", this.articleService.getArticleByCodi(codi));
         return mv;
     }
+    /**
+     * Crea un ModelAndView amb la vista “add + tipus” (on tipus depén del tipus d’article que es vol crear) 
+     * @param codi
+     * @return 
+     */
+    @RequestMapping(value="/add/{tipus}" , method=RequestMethod.GET)
+    public ModelAndView addArticleForm(@PathVariable String tipus ,HttpServletRequest request,HttpServletResponse response){
+        ModelAndView mv=new ModelAndView("add"+tipus);
+        mv.getModelMap().addAttribute(title,nadal );
+        mv.getModelMap().addAttribute(tagline, "Afegir un article de tipus "+tipus+" al catàleg");
+        
+        return mv;
+        
+    }
+    
 }
